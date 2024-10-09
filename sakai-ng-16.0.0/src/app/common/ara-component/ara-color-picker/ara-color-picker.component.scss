@@ -1,0 +1,15 @@
+.item {
+  height: 32px;
+  width: 32px;
+  border-radius: 5px;
+}
+
+.item:hover {
+  cursor: pointer;
+  border-radius: 50%;
+  opacity: 0.9;
+}
+
+.item-selected {
+  border-radius: 20px;
+}

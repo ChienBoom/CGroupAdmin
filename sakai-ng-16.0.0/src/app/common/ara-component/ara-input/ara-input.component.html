@@ -1,0 +1,25 @@
+<div class="w-full">
+  <mat-label>{{ label }}<span class="text-red-400" *ngIf="required">*</span></mat-label>
+  <div
+    class="flex items-center justify-between border rounded-md min-h-12 mt-2 input-bg w-full"
+  >
+    <input
+      matInput
+      type="text"
+      class="h-12 outline-0 pl-2 input-bg"
+      [value]="displayValue"
+      (keyup)="handleChangeInput($event)"
+      [disabled]="disabled"
+      (blur)="handleBlur()"
+    />
+    <button
+      *ngIf="displayValue != '' && useClear && !disabled"
+      (click)="handleClear()"
+      class="close-button mr-2"
+    >
+      <mat-icon matSuffix>close</mat-icon>
+    </button>
+  </div>
+  <mat-error *ngIf="control?.touched && control?.errors?.required">Yêu cầu nhập thông tin</mat-error>
+  <mat-error *ngIf="control?.touched &&  control?.errors?.minlength">Độ dài tối thiểu là 10</mat-error>
+</div>

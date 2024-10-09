@@ -1,0 +1,299 @@
+<div class="card">
+    <p-steps
+        [model]="items"
+        [readonly]="false"
+        [activeIndex]="activeIndex"
+        (activeIndexChange)="onActiveIndexChange($event)"
+    ></p-steps>
+</div>
+<div class="flex">
+    <div class="w-2/3" *ngIf="activeIndex === 0">
+        <p-accordion>
+            <p-accordionTab header="Chọn rạp">
+                <div>
+                    <button
+                        pButton
+                        pRipple
+                        type="button"
+                        class="p-button-outlined p-button-secondary mr-2 rounded-md"
+                    >
+                        TP. Hồ Chí Minh
+                    </button>
+                    <button
+                        pButton
+                        pRipple
+                        type="button"
+                        class="p-button-outlined p-button-secondary mr-2 rounded-md"
+                    >
+                        Hà Nội
+                    </button>
+                    <button
+                        pButton
+                        pRipple
+                        type="button"
+                        class="p-button-outlined p-button-secondary mr-2 rounded-md"
+                    >
+                        Đà Nẵng
+                    </button>
+                    <button
+                        pButton
+                        pRipple
+                        type="button"
+                        class="p-button-outlined p-button-secondary mr-2 rounded-md"
+                    >
+                        An Giang
+                    </button>
+                    <button
+                        pButton
+                        pRipple
+                        type="button"
+                        class="p-button-outlined p-button-secondary mr-2 rounded-md"
+                    >
+                        Hải Phòng
+                    </button>
+                </div>
+            </p-accordionTab>
+            <p-accordionTab header="Chọn phim">
+                <div class="flex flex-wrap mt-4">
+                    <div class="w-1/4 p-2 hover:opacity-80">
+                        <p-image
+                            src="https://cdn.galaxycine.vn/media/2024/6/7/aqp-500_1717732454254.jpg"
+                            alt="Image"
+                        ></p-image>
+                        <span class="font-bold"
+                            >Vùng Đất Câm Lặng: Ngày Một</span
+                        >
+                    </div>
+                    <div class="w-1/4 p-2 hover:opacity-80">
+                        <p-image
+                            src="https://cdn.galaxycine.vn/media/2024/6/7/gtcn-500_1717732724699.jpg"
+                            alt="Image"
+                        ></p-image>
+                        <span class="font-bold">Gia Tài Của Ngoại</span>
+                    </div>
+                    <div class="w-1/4 p-2 hover:opacity-80">
+                        <p-image
+                            src="https://cdn.galaxycine.vn/media/2024/6/13/cmhd-500_1718263877171.jpg"
+                            alt="Image"
+                        ></p-image>
+                        <span class="font-bold">Chuyện Ma Giảng Đường</span>
+                    </div>
+                    <div class="w-1/4 p-2 hover:opacity-80">
+                        <p-image
+                            src="https://cdn.galaxycine.vn/media/2024/6/14/abl-500_1718351220871.jpg"
+                            alt="Image"
+                        ></p-image>
+                        <span class="font-bold"
+                            >Chờ Người Nơi Pháo Hoa Rực Rỡ</span
+                        >
+                    </div>
+                    <div class="w-1/4 p-2 hover:opacity-80">
+                        <p-image
+                            src="https://cdn.galaxycine.vn/media/2024/6/3/cuu-long-thanh-trai-vay-thanh-1_1717402596500.jpg"
+                            alt="Image"
+                        ></p-image>
+                        <span class="font-bold"
+                            >Cửu Long Thành Trại: Vây Thành</span
+                        >
+                    </div>
+                    <div class="w-1/4 p-2 hover:opacity-80">
+                        <p-image
+                            src="https://cdn.galaxycine.vn/media/2024/5/6/inside-out-2-3_1714970461256.jpg"
+                            alt="Image"
+                        ></p-image>
+                        <span class="font-bold">Inside Out 2</span>
+                    </div>
+                    <div class="w-1/4 p-2 hover:opacity-80">
+                        <p-image
+                            src="https://cdn.galaxycine.vn/media/2024/5/21/doraemon-movie-43-nobitas-earth-symphony-1-1_1716273120350.jpg"
+                            alt="Image"
+                        ></p-image>
+                        <span class="font-bold"
+                            >Phim Điện Ảnh Doreamon: Bản Giao Hưởng Địa
+                            Cầu</span
+                        >
+                    </div>
+                    <div class="w-1/4 p-2 hover:opacity-80">
+                        <p-image
+                            src="https://cdn.galaxycine.vn/media/2024/6/25/hai-khoang-troi-song-song-500_1719302263444.jpg"
+                            alt="Image"
+                        ></p-image>
+                        <span class="font-bold">Hai Khoảng Trời Song Song</span>
+                    </div>
+                </div>
+            </p-accordionTab>
+            <p-accordionTab header="Chọn suất chiếu">
+                <div class="mt-2 flex">
+                    <p-calendar
+                        [showIcon]="true"
+                        inputId="icon"
+                        class="w-1/2"
+                    ></p-calendar>
+                    <p-autoComplete
+                        [(ngModel)]="selectedItem"
+                        [virtualScroll]="true"
+                        [suggestions]="filteredItems"
+                        [virtualScrollItemSize]="34"
+                        field="label"
+                        class="w-1/2 flex justify-end"
+                        [dropdown]="true"
+                    >
+                    </p-autoComplete>
+                </div>
+                <div class="mt-2">
+                    <span class="font-bold text-xl"
+                        >Galaxy Mipec Long Biên</span
+                    >
+                    <div class="flex mt-2 justify-center">
+                        <span class="w-1/4 p-2">2D Phụ Đề</span>
+                        <div class="w-3/4 flex">
+                            <button
+                                pButton
+                                pRipple
+                                type="button"
+                                class="p-button-outlined p-button-secondary mr-2 rounded-md"
+                            >
+                                12:15
+                            </button>
+                            <button
+                                pButton
+                                pRipple
+                                type="button"
+                                class="p-button-outlined p-button-secondary mr-2 rounded-md"
+                            >
+                                13:30
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </p-accordionTab>
+        </p-accordion>
+    </div>
+    <div class="w-2/3" *ngIf="activeIndex === 1">
+        <div class="card flex items-center">
+            <span class="w-1/4 font-bold">Đổi suất chiếu</span>
+            <div class="w-3/4 flex">
+                <button
+                    pButton
+                    pRipple
+                    type="button"
+                    class="p-button-outlined p-button-secondary mr-2 rounded-md"
+                >
+                    12:15
+                </button>
+            </div>
+        </div>
+        <div class="card flex flex-col">
+            <div class="border-2 border-amber-600"></div>
+            <span class="flex justify-center">Màn hình</span>
+            <div *ngFor="let position of positions" class="flex mt-4">
+                <span class="w-1/5">{{ position.name }}</span>
+                <div class="w-3/5 flex justify-center">
+                    <div *ngFor="let chair of position.chairs">
+                        <div
+                            class="size-6 border rounded-md text-center mx-1 hover:cursor-pointer hover:border-amber-600"
+                        >
+                            {{ chair.column }}
+                        </div>
+                    </div>
+                </div>
+                <span class="w-1/5 flex justify-end">{{ position.name }}</span>
+            </div>
+            <p-divider></p-divider>
+            <div class="flex">
+                <div class="w-1/2 flex">
+                    <div class="size-6 border rounded-md bg-slate-600"></div>
+                    <span>Ghế đã bán</span>
+                    <div
+                        class="size-6 border rounded-md bg-amber-600 ml-4"
+                    ></div>
+                    <span>Ghế đang chọn</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w-2/3" *ngIf="activeIndex === 2">
+        <div class="card">
+            <span class="text-xl font-bold">Chọn Combo</span>
+            <div *ngFor="let combo of combos" class="mt-2">
+                <div class="flex m-4">
+                    <p-image
+                        class="w-2/5"
+                        src="https://cdn.galaxycine.vn/media/2024/3/29/menuboard-coonline-2024-combo1-min_1711699834430.jpg"
+                        alt="Image"
+                    ></p-image>
+                    <div class="w-3/5 flex flex-col ml-4 text-xl">
+                        <span class="font-bold">{{ combo.name }}</span>
+                        <span class="mt-2">{{ combo.price }}</span>
+                        <span class="my-2">{{ combo.desc }}</span>
+                        <p-inputNumber
+                            mode="decimal"
+                            [showButtons]="true"
+                            [min]="0"
+                            [max]="100"
+                        >
+                        </p-inputNumber>
+                    </div>
+                </div>
+                <p-divider></p-divider>
+            </div>
+        </div>
+    </div>
+    <div class="w-2/3" *ngIf="activeIndex === 3">
+        <div class="card">
+            CHỨC NĂNG CHƯA HOÀN THIỆN
+        </div>
+    </div>
+    <div class="w-2/3" *ngIf="activeIndex === 4">Xác nhận</div>
+    <div class="w-1/3 card ml-6">
+        <div class="flex">
+            <p-image
+                class="w-1/3"
+                src="https://cdn.galaxycine.vn/media/2024/5/21/doraemon-movie-43-nobitas-earth-symphony-1-1_1716273120350.jpg"
+                alt="Image"
+            ></p-image>
+            <div class="w-2/3 ml-2 flex flex-col">
+                <span class="font-bold text-xl"
+                    >Phim hoạt hình Doremon: Nobita và Bản Giao Hưởng Địa
+                    Cầu</span
+                >
+                <span>2D - Lồng Tiếng</span>
+            </div>
+        </div>
+        <div class="flex items-center mt-2 text-xl">
+            <span class="font-bold">Galaxy GO! Mall Bà Rịa</span>
+            <span> - </span>
+            <span>RAP 2</span>
+        </div>
+        <div class="flex items-center mt-2 text-xl">
+            <span>Suất: </span>
+            <span class="font-bold">12:15</span>
+            <span> - </span>
+            <span>Thứ Hai,</span>
+            <span class="font-bold">01/07/2024</span>
+        </div>
+        <p-divider></p-divider>
+        <div class="flex items-center mt-2 text-xl">
+            <span class="w-1/3">Tổng cộng: </span>
+            <span class="w-2/3 flex justify-end">0đ</span>
+        </div>
+        <div class="flex mt-2">
+            <button
+                pButton
+                pRipple
+                type="button"
+                label="Quay lại"
+                class="p-button-outlined p-button-warning w-1/2 mr-2"
+                (click)="handleBack()"
+            ></button>
+            <button
+                pButton
+                pRipple
+                type="button"
+                label="Tiếp tục"
+                class="p-button-warning w-1/2 ml-2"
+                (click)="handleContinue()"
+            ></button>
+        </div>
+    </div>
+</div>

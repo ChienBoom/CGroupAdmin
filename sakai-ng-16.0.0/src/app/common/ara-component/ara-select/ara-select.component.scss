@@ -1,0 +1,12 @@
+.select-bg {
+  background-color: #f4f7ff;
+}
+
+:host ::ng-deep .mat-mdc-select-trigger {
+  height: 48px;
+  padding-left: 8px;
+}
+
+:host ::ng-deep .mat-mdc-select-arrow-wrapper {
+  padding-right: 8px;
+}

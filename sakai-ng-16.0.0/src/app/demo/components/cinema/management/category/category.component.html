@@ -1,0 +1,26 @@
+
+<div class="card">
+    <div class="flex items-center justify-between mb-4">
+        <span class="font-bold text-2xl">Quản lý thể loại phim</span>
+        <button pButton pRipple label="Submit" pTooltip="Thêm mới" icon="pi pi-plus" (click)="handleAddBtn()"></button>
+    </div>
+    <p-table [value]="data" [tableStyle]="{'min-width': '50rem'}">
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th>Tên thể loại</th>
+                <th>Mô tả</th>
+                <th class="flex justify-center">Thao tác</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product let-columns="columns">
+            <tr>
+                <td>{{product.name}}</td>
+                <td>{{product.desc}}</td>
+                <td class="flex justify-center">
+                    <button pButton pRipple type="button" icon="pi pi-file-edit" pTooltip="Sửa" class="p-button-rounded p-button-text"></button>
+                    <button pButton pRipple type="button" icon="pi pi-trash" pTooltip="Xoá" class="p-button-rounded p-button-text"></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

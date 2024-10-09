@@ -1,0 +1,15 @@
+<mat-label>{{ label }}</mat-label>
+<mat-select
+  class="select-bg h-12 border rounded-md"
+  [required]="required"
+  [(value)]="value"
+  (valueChange)="handleChange($event)"
+  [disabled]="disabled"
+  [multiple]="multiple"
+  (blur)="handleBlur()"
+>
+  <mat-option *ngFor="let item of lstOption" [value]="item[valueOption]">{{
+    item[displayOption]
+  }}</mat-option>
+</mat-select>
+<mat-error *ngIf="control?.touched && control?.errors?.required">Yêu cầu chọn bắt buộc</mat-error>

@@ -1,0 +1,6 @@
+<mat-label>{{ label }}</mat-label>
+<mat-card class="h-12 justify-center">
+  <div class="pl-4">
+    <mat-slide-toggle [disabled]="disabled" (change)="handleChange($event)" [checked]="value">{{displayText}}</mat-slide-toggle>
+  </div>
+</mat-card>

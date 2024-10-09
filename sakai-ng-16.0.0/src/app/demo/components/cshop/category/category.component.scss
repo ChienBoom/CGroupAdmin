@@ -1,0 +1,11 @@
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+// ::ng-deep .scrollHeight {
+//   height: calc(100vh - 400px) !important;
+// }

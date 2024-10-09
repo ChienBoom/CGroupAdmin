@@ -1,0 +1,54 @@
+<button
+  mat-icon-button
+  [matMenuTriggerFor]="menu"
+  [disabled]="disabled"
+  [style]="'background-color: ' + value + ';'"
+>
+  <mat-icon
+    aria-hidden="false"
+    aria-label="Example home icon"
+    fontIcon="color_lens"
+  ></mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <div *ngIf="option == 'color'">
+    <span class="flex justify-center">Select Color</span>
+    <div class="grid grid-cols-5 gap-1">
+      <div *ngFor="let color of lstColor">
+        <div
+          class="item"
+          [ngClass]="[
+            'bg-' + color.name + '-500',
+            color.name == colorValue ? 'item-selected' : ''
+          ]"
+          (click)="handleClickColor($event, color)"
+        ></div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="option == 'alpha'">
+    <div class="flex items-center justify-between">
+      <button mat-icon-button (click)="handleBack($event)">
+        <mat-icon aria-hidden="false" fontIcon="keyboard_arrow_left"></mat-icon>
+      </button>
+      <span>{{ colorValue }}</span>
+      <button mat-icon-button>
+        <mat-icon aria-hidden="false" fontIcon="delete"></mat-icon>
+      </button>
+    </div>
+    <div class="grid grid-cols-5 gap-1">
+      <div *ngFor="let alpha of lstAlpha">
+        <div
+          class="item"
+          [ngClass]="[
+            'bg-' + colorValue + '-' + alpha.name,
+            alpha.name == alphaValue && currentColorValue == colorValue ? 'item-selected' : ''
+          ]"
+          (click)="handleClickAlpha(alpha.name)"
+        ></div>
+      </div>
+    </div>
+  </div>
+</mat-menu>
+
+<span>{{ colorValue }} - {{ alphaValue }}</span>

@@ -1,0 +1,55 @@
+{
+    "Menu": {
+        "Group": {
+            "Home": "Home"
+        },
+        "CShop": {
+            "Title": "CShop",
+            "Supplier": "Supplier",
+            "Brand": "Brand",
+            "Category": "Category",
+            "Product": "Products",
+            "ProductDetail": "ProductDetails",
+            "Order": "Orders",
+            "Report": "Reports - Statistics"
+        }
+    },
+    "Common": {
+        "Position": "#",
+        "Yes": "Yes",
+        "No": "No",
+        "Add": "Create",
+        "Search": "Search",
+        "Operation": "Operation",
+        "Cancel": "Cancel",
+        "Save": "Save",
+        "Loading": "Loading",
+        "Status": "Status",
+        "Upload": "Upload"
+    },
+    "Message": {
+        "Notification": "Notification",
+        "CreateSuccess": "New record added successfully",
+        "CreateFaild": "Add new record failed",
+        "UpdateSuccess": "Updated record successfully",
+        "UpdateFaild": "Update record failed",
+        "DeleteSuccess": "Record deleted successfully",
+        "DeleteFaild": "Delete record failed"
+    },
+    "CShop": {
+        "Category": {
+            "Title": "Category Management",
+            "Name": "Name",
+            "Quantity": "Quantity",
+            "Image": "Image",
+            "Description": "Description"
+        },
+        "Brand": {
+            "Title": "Brands",
+            "Name": "Name",
+            "Email": "Email",
+            "PhoneNumber": "Phone Number",
+            "Address": "Address"
+        }
+    }
+}

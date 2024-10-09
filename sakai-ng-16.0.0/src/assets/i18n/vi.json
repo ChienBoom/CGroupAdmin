@@ -1,0 +1,55 @@
+{
+  "Menu": {
+    "Group":{
+        "Home": "Trang chủ"
+    },
+    "CShop":{
+        "Title": "CShop",
+        "Supplier": "Nhà cung cấp",
+        "Brand": "Thương hiệu",
+        "Category": "Danh mục sản phẩm",
+        "Product": "Sản phẩm",
+        "ProductDetail": "Chi tiết sản phẩm",
+        "Order": "Đặt hàng",
+        "Report": "Báo cáo - Thống kê"
+    }
+  },
+  "Common":{
+      "Position": "#",
+      "Yes": "Có",
+      "No": "Không",
+      "Add": "Thêm mới",
+      "Search": "Tìm kiếm",
+      "Operation": "Thao tác",
+      "Cancel": "Huỷ",
+      "Save": "Lưu",
+      "Loading": "Đang tải dữ liệu",
+      "Status": "Trạng thái",
+      "Upload": "Tải lên"
+  },
+  "Message": {
+    "Notification": "Thông báo",
+    "CreateSuccess": "Thêm mới bản ghi thành công",
+    "CreateFaild": "Thêm mới bản ghi thất bại",
+    "UpdateSuccess": "Cập nhật bản ghi thành công",
+    "UpdateFaild": "Cập nhật bản ghi thất bại",
+    "DeleteSuccess": "Xoá bản ghi thành công",
+    "DeleteFaild": "Xoá bản ghi thất bại"
+  },
+  "CShop":{
+    "Category":{
+        "Title": "Danh mục sản phẩm",
+        "Name": "Tên danh mục",
+        "Quantity": "Số lượng sản phẩm",
+        "Image": "Hình ảnh",
+        "Description": "Mô tả"
+    },
+    "Brand": {
+        "Title": "Danh sách Thương hiệu",
+        "Name": "Tên thương hiệu",
+        "Email": "Email",
+        "PhoneNumber": "Số điện thoại",
+        "Address": "Địa chỉ"
+    }
+  }
+}
