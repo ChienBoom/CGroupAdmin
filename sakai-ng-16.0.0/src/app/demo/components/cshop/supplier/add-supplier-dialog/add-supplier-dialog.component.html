@@ -1,34 +1,32 @@
 <div>
     <div class="content">
         <div class="flex flex-col mt-4">
-            <label for="">{{'CShop.Category.Name' | translate}}</label>
+            <label for="">{{'CShop.Supplier.Name' | translate}}</label>
             <input type="text" pInputText [(ngModel)]="item.name" />
         </div>
         <div class="flex mt-2">
             <div class="flex flex-col w-1/2 mr-2">
-                <label for="">{{'CShop.Category.Quantity' | translate}}</label>
+                <label for="">{{'CShop.Supplier.Email' | translate}}</label>
                 <input
-                    type="number"
+                    type="text"
                     pInputText
-                    [(ngModel)]="item.numberProduct"
+                    [(ngModel)]="item.email"
                 />
             </div>
             <div class="flex flex-col w-1/2">
-                <label for="">{{'Common.Status' | translate}}</label>
-                <input type="number" pInputText [(ngModel)]="item.status" />
+                <label for="">{{'CShop.Supplier.PhoneNumber' | translate}}</label>
+                <input type="text" pInputText [(ngModel)]="item.phoneNumber" />
             </div>
         </div>
 
         <div class="flex flex-col mt-2">
-            <label for="">{{'CShop.Category.Image' | translate}}</label>
-            <p-fileUpload
-                mode="advanced"
-                name="demo[]"
-                maxFileSize="1000000"
-                (onSelect)="onUpload($event)"
-                [auto]="true"
-                chooseLabel="{{'Common.Upload' | translate}}"
-            ></p-fileUpload>
+            <label for="">{{'CShop.Supplier.Address' | translate}}</label>
+            <textarea
+                rows="2"
+                cols="30"
+                pInputTextarea
+                [(ngModel)]="item.address"
+            ></textarea>
         </div>
 
         <div class="flex flex-col mt-2">

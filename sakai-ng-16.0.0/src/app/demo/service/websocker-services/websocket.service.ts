@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import * as signalR from '@microsoft/signalr';
 
 @Injectable({
@@ -6,6 +6,7 @@ import * as signalR from '@microsoft/signalr';
 })
 export class WebSocketService {
     private hubConnection: signalR.HubConnection;
+    public messageReceived = new EventEmitter<any>();
 
     public startConnection = () => {
         this.hubConnection = new signalR.HubConnectionBuilder()
@@ -22,7 +23,7 @@ export class WebSocketService {
 
     public addReceiveMessageListener = () => {
         this.hubConnection.on('ReceiveMessage', (user, message) => {
-            console.log(user + ' says ' + message);
+            this.messageReceived.emit({ user, message });
         });
     };
 

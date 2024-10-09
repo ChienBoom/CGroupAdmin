@@ -19,6 +19,7 @@ import { AppLayoutComponent } from "./app.layout.component";
 import { ProgressBarModule } from 'primeng/progressbar';
 import { DropdownModule } from 'primeng/dropdown';
 import { TranslateModule } from '@ngx-translate/core';
+import { ToastModule } from 'primeng/toast';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { TranslateModule } from '@ngx-translate/core';
         AppConfigModule,
         ProgressBarModule,
         DropdownModule,
-        TranslateModule.forChild()
+        TranslateModule.forChild(),
+        ToastModule,
     ],
     exports: [AppLayoutComponent],
 })

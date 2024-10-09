@@ -15,8 +15,19 @@ export class ProductService extends BaseService {
         super(http);
     }
 
-    getProducts(): Observable<any> {
-        return this.get<any>(this.apiUrl);
+    getProducts(includes: string[] = []): Observable<any> {
+        let url = this.apiUrl
+        if (!includes || includes.length > 0) {
+            url += '?';
+            includes.map((x, index) => {
+                if (index > 0) {
+                    url += `&includes=${x}`;
+                } else {
+                    url += `includes=${x}`;
+                }
+            });
+        }
+        return this.get<any>(url);
     }
 
     create(body: any): Observable<any> {

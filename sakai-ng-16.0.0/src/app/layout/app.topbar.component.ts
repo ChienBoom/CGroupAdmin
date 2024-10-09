@@ -1,5 +1,5 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { MenuItem } from 'primeng/api';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { MenuItem, MessageService } from 'primeng/api';
 import { LayoutService } from './service/app.layout.service';
 import { TranslateService } from '@ngx-translate/core';
 import { WebSocketService } from '../demo/service/websocker-services/websocket.service';
@@ -8,7 +8,7 @@ import { WebSocketService } from '../demo/service/websocker-services/websocket.s
     selector: 'app-topbar',
     templateUrl: './app.topbar.component.html',
 })
-export class AppTopBarComponent {
+export class AppTopBarComponent implements OnInit {
     items!: MenuItem[];
     languages: any[] = [
         { id: 1, name: 'VN', code: 'vi' },
@@ -26,7 +26,8 @@ export class AppTopBarComponent {
     constructor(
         public layoutService: LayoutService,
         private translate: TranslateService,
-        public webSocketService: WebSocketService
+        public webSocketService: WebSocketService,
+        private messageService: MessageService
     ) {
         this.webSocketService.startConnection();
         this.webSocketService.addReceiveMessageListener();
@@ -34,7 +35,32 @@ export class AppTopBarComponent {
         this.translate.setDefaultLang('vi');
     }
 
+    ngOnInit(): void {
+        this.webSocketService.messageReceived.subscribe((msg) => {
+            this.toastMessage(
+                'msg-toast',
+                'info',
+                'Thông báo',
+                msg.message
+            );
+        });
+    }
+
     handleChangeLanguage(event: any) {
         this.translate.use(event.value.code);
+    }
+
+    toastMessage(
+        key: string,
+        severity: string,
+        title: string,
+        message: string
+    ) {
+        this.messageService.add({
+            key: key,
+            severity: severity,
+            summary: title,
+            detail: message,
+        });
     }
 }

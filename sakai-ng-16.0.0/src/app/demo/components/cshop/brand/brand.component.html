@@ -34,7 +34,7 @@
             <p-table
                 [value]="data"
                 [scrollable]="true"
-                scrollHeight="calc(100vh - 150px)"
+                scrollHeight="calc(100vh - 260px)"
                 [tableStyle]="{ 'min-width': '50rem' }"
             >
                 <ng-template pTemplate="header">
@@ -89,7 +89,7 @@
             [first]="first"
             [rows]="rows"
             [totalRecords]="data.length"
-            [rowsPerPageOptions]="[10, 20, 30]"
+            [rowsPerPageOptions]="pageOption"
         ></p-paginator>
     </section>
 </div>

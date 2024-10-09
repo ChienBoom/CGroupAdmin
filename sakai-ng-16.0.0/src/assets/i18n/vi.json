@@ -37,19 +37,34 @@
     "DeleteFaild": "Xoá bản ghi thất bại"
   },
   "CShop":{
-    "Category":{
-        "Title": "Danh mục sản phẩm",
-        "Name": "Tên danh mục",
-        "Quantity": "Số lượng sản phẩm",
-        "Image": "Hình ảnh",
-        "Description": "Mô tả"
-    },
-    "Brand": {
-        "Title": "Danh sách Thương hiệu",
-        "Name": "Tên thương hiệu",
-        "Email": "Email",
-        "PhoneNumber": "Số điện thoại",
-        "Address": "Địa chỉ"
-    }
+      "Category": {
+          "Title": "Danh mục sản phẩm",
+          "Name": "Tên danh mục",
+          "Quantity": "Số lượng sản phẩm",
+          "Image": "Hình ảnh",
+          "Description": "Mô tả"
+      },
+      "Brand": {
+          "Title": "Danh sách Thương hiệu",
+          "Name": "Tên thương hiệu",
+          "Email": "Email",
+          "PhoneNumber": "Số điện thoại",
+          "Address": "Địa chỉ"
+      },
+      "Supplier": {
+          "Title": "Danh sách Nhà cung cấp",
+          "Name": "Tên nhà cung cấp",
+          "Email": "Email",
+          "PhoneNumber": "Số điện thoại",
+          "Address": "Địa chỉ"
+      },
+      "Product": {
+          "Title": "Danh sách Sản phẩm",
+          "Name": "Tên sản phẩm",
+          "NumberSold": "SL đã bán",
+          "NumberStock": "SL còn trong kho",
+          "Star": "Sao",
+          "NumberEvaluate": "SL đánh giá"
+      }
   }
 }

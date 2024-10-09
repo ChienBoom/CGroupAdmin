@@ -39,17 +39,32 @@
     "CShop": {
         "Category": {
             "Title": "Category Management",
-            "Name": "Name",
+            "Name": "Category name",
             "Quantity": "Quantity",
             "Image": "Image",
             "Description": "Description"
         },
         "Brand": {
             "Title": "Brands",
-            "Name": "Name",
+            "Name": "Brand name",
             "Email": "Email",
-            "PhoneNumber": "Phone Number",
+            "PhoneNumber": "Phone number",
             "Address": "Address"
+        },
+        "Supplier": {
+            "Title": "Suppliers",
+            "Name": "Supplier name",
+            "Email": "Email",
+            "PhoneNumber": "Phone number",
+            "Address": "Address"
+        },
+        "Product": {
+            "Title": "Products",
+            "Name": "Product name",
+            "NumberSold": "Quantity sold",
+            "NumberStock": "Quantity stock",
+            "Star": "Star",
+            "NumberEvaluate": "Number evaluate"
         }
     }
 }

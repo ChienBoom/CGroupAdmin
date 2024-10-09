@@ -28,13 +28,6 @@ export class BrandComponent implements OnInit{
 
     ngOnInit() {
         this.fetchData();
-        this.brandService.getBrands().subscribe((rs) => {
-            this.data = rs.map((x, index) => {
-                x.position = index + 1;
-                return x;
-            });
-            this.isLoading = false;
-        });
     }
 
     fetchData() {

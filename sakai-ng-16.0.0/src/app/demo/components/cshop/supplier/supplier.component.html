@@ -8,7 +8,7 @@
     <p-confirmDialog></p-confirmDialog>
     <div class="flex items-center justify-between">
         <span class="font-semibold text-xl text-primary">{{
-            "CShop.Brand.Title" | translate
+            "CShop.Supplier.Title" | translate
         }}</span>
         <div>
             <span class="p-input-icon-right">
@@ -34,18 +34,18 @@
             <p-table
                 [value]="data"
                 [scrollable]="true"
-                scrollHeight="calc(100vh - 150px)"
+                scrollHeight="calc(100vh - 260px)"
                 [tableStyle]="{ 'min-width': '50rem' }"
             >
                 <ng-template pTemplate="header">
                     <tr>
                         <th>{{ "Common.Position" | translate }}</th>
-                        <th>{{ "CShop.Brand.Name" | translate }}</th>
+                        <th>{{ "CShop.Supplier.Name" | translate }}</th>
                         <th class="text-center">
-                            {{ "CShop.Brand.Email" | translate }}
+                            {{ "CShop.Supplier.Email" | translate }}
                         </th>
-                        <th>{{ "CShop.Brand.PhoneNumber" | translate }}</th>
-                        <th>{{ "CShop.Brand.Address" | translate }}</th>
+                        <th>{{ "CShop.Supplier.PhoneNumber" | translate }}</th>
+                        <th>{{ "CShop.Supplier.Address" | translate }}</th>
                         <th class="text-center">
                             {{ "Common.Operation" | translate }}
                         </th>

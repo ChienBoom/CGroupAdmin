@@ -15,8 +15,19 @@ export class SupplierService extends BaseService {
         super(http);
     }
 
-    getSuppliers(): Observable<any> {
-        return this.get<any>(this.apiUrl);
+    getSuppliers(includes: string[] = []): Observable<any> {
+        let url = this.apiUrl;
+        if (!includes || includes.length > 0) {
+            url += '?';
+            includes.map((x, index) => {
+                if (index > 0) {
+                    url += `&includes=${x}`;
+                } else {
+                    url += `includes=${x}`;
+                }
+            });
+        }
+        return this.get<any>(url);
     }
 
     create(body: any): Observable<any> {

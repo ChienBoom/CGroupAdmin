@@ -34,7 +34,7 @@ export class AppMenuComponent implements OnInit {
                     },
                     {
                         label: 'Menu.CShop.Brand',
-                        icon: 'pi pi-fw pi-home',
+                        icon: 'pi pi-fw pi-globe',
                         routerLink: ['/cshop/brand'],
                     },
                     {
@@ -44,7 +44,7 @@ export class AppMenuComponent implements OnInit {
                     },
                     {
                         label: 'Menu.CShop.Product',
-                        icon: 'pi pi-fw pi-th-large',
+                        icon: 'pi pi-fw pi-tags',
                         routerLink: ['/cshop/product'],
                     },
                     {

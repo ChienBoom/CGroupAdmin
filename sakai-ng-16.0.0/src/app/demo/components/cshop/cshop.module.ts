@@ -40,6 +40,8 @@ import { SupplierComponent } from './supplier/supplier.component';
 import { ProductComponent } from './product/product.component';
 import { OrderComponent } from './order/order.component';
 import { RevenueComponent } from './revenue/revenue.component';
+import { AddSupplierDialogComponent } from './supplier/add-supplier-dialog/add-supplier-dialog.component';
+import { AddProductDialogComponent } from './product/add-product-dialog/add-product-dialog.component';
 
 @NgModule({
     declarations: [
@@ -51,6 +53,8 @@ import { RevenueComponent } from './revenue/revenue.component';
         ProductComponent,
         OrderComponent,
         RevenueComponent,
+        AddSupplierDialogComponent,
+        AddProductDialogComponent,
     ],
     imports: [
         CShopRoutingModule,

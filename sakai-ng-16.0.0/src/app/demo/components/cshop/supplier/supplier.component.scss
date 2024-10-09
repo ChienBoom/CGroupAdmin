@@ -1,3 +1,11 @@
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
 .content-table{
     height: calc(100vh - 260px);
 }

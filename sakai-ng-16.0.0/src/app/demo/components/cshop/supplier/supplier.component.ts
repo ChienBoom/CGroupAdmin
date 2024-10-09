@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { WebSocketService } from 'src/app/demo/service/websocker-services/websocket.service';
-import { AddBrandDialogComponent } from '../brand/add-brand-dialog/add-brand-dialog.component';
 import { SupplierService } from 'src/app/demo/service/cshop-services/supplier.service';
+import { AddSupplierDialogComponent } from './add-supplier-dialog/add-supplier-dialog.component';
 
 @Component({
     selector: 'app-supplier',
@@ -28,13 +28,6 @@ export class SupplierComponent implements OnInit{
 
     ngOnInit() {
         this.fetchData();
-        this.supplierService.getSuppliers().subscribe((rs) => {
-            this.data = rs.map((x, index) => {
-                x.position = index + 1;
-                return x;
-            });
-            this.isLoading = false;
-        });
     }
 
     fetchData() {
@@ -48,7 +41,7 @@ export class SupplierComponent implements OnInit{
     }
 
     handleCreate() {
-        this.dialogRef = this.dialogService.open(AddBrandDialogComponent, {
+        this.dialogRef = this.dialogService.open(AddSupplierDialogComponent, {
             data: {
                 data: {},
                 IsCopy: false,
@@ -80,7 +73,7 @@ export class SupplierComponent implements OnInit{
     }
 
     handleCopy(item: any) {
-        this.dialogRef = this.dialogService.open(AddBrandDialogComponent, {
+        this.dialogRef = this.dialogService.open(AddSupplierDialogComponent, {
             data: {
                 data: item,
                 IsCopy: true,
