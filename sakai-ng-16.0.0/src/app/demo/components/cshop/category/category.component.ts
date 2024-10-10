@@ -14,6 +14,7 @@ import { WebSocketService } from 'src/app/demo/service/websocker-services/websoc
 export class CategoryComponent implements OnInit{
     dialogRef: DynamicDialogRef | undefined;
     data: any[];
+    totalCount: number = 0;
     isLoading = true;
     first: number = 0;
     rows: number = 10;
@@ -33,8 +34,9 @@ export class CategoryComponent implements OnInit{
     }
 
     fetchData() {
-        this.categoryService.getCategories().subscribe((rs) => {
-            this.data = rs.map((x, index) => {
+        this.categoryService.getCategories([], this.first/this.rows, this.rows).subscribe((rs) => {
+            this.totalCount = rs.totalCount
+            this.data = rs.data.map((x, index) => {
                 x.position = index + 1;
                 return x;
             });
@@ -126,6 +128,7 @@ export class CategoryComponent implements OnInit{
     onPageChange(event: any) {
         this.first = event.first;
         this.rows = event.rows;
+        this.fetchData()
     }
 
     toastMessage(

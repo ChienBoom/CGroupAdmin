@@ -55,7 +55,9 @@ export class AddProductDialogComponent implements OnInit {
 
     async ngOnInit(): Promise<void> {
         if (this.config.data.IsCopy) {
+            console.log('data: ', this.config.data.data);
             this.item = this.config.data.data;
+            console.log("item: ", this.item)
             this.isCopy = true;
         }
         this.getSuppliers();
@@ -65,21 +67,21 @@ export class AddProductDialogComponent implements OnInit {
 
     getCategories() {
         this.categoryService.getCategories().subscribe((rs) => {
-            this.categories = rs;
-            this.categories.push({id: '', name:''})
+            this.categories = rs.data;
+            this.categories.push({ id: '', name: '' });
         });
     }
 
     getBrands() {
         this.brandService.getBrands().subscribe((rs) => {
-            this.brands = rs
+            this.brands = rs.data;
             this.brands.push({ id: '', name: '' });
         });
     }
 
     getSuppliers() {
         this.supplierService.getSuppliers().subscribe((rs) => {
-            this.suppliers = rs
+            this.suppliers = rs.data;
             this.suppliers.push({ id: '', name: '' });
         });
     }
@@ -133,7 +135,13 @@ export class AddProductDialogComponent implements OnInit {
     }
 
     get formValid() {
-        if (this.item.name == '' || this.item.categoryId == '' || this.item.brandId == '' || this.item.supplierId == '') return false;
+        if (
+            this.item.name == '' ||
+            this.item.categoryId == '' ||
+            this.item.brandId == '' ||
+            this.item.supplierId == ''
+        )
+            return false;
         return true;
     }
 }

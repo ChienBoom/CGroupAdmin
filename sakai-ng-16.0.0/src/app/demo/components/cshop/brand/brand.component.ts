@@ -13,6 +13,7 @@ import { AddBrandDialogComponent } from './add-brand-dialog/add-brand-dialog.com
 export class BrandComponent implements OnInit{
     dialogRef: DynamicDialogRef | undefined;
     data: any[];
+    totalCount: number = 0;
     isLoading = true;
     first: number = 0;
     rows: number = 10;
@@ -31,8 +32,9 @@ export class BrandComponent implements OnInit{
     }
 
     fetchData() {
-        this.brandService.getBrands().subscribe((rs) => {
-            this.data = rs.map((x, index) => {
+        this.brandService.getBrands([], this.first/this.rows, this.rows).subscribe((rs) => {
+            this.totalCount = rs.totalCount
+            this.data = rs.data.map((x, index) => {
                 x.position = index + 1;
                 return x;
             });
@@ -124,6 +126,7 @@ export class BrandComponent implements OnInit{
     onPageChange(event: any) {
         this.first = event.first;
         this.rows = event.rows;
+        this.fetchData();
     }
 
     toastMessage(

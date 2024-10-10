@@ -10,9 +10,10 @@ import { AddSupplierDialogComponent } from './add-supplier-dialog/add-supplier-d
     templateUrl: './supplier.component.html',
     styleUrls: ['./supplier.component.scss'],
 })
-export class SupplierComponent implements OnInit{
+export class SupplierComponent implements OnInit {
     dialogRef: DynamicDialogRef | undefined;
     data: any[];
+    totalCount: number = 0;
     isLoading = true;
     first: number = 0;
     rows: number = 10;
@@ -31,13 +32,16 @@ export class SupplierComponent implements OnInit{
     }
 
     fetchData() {
-        this.supplierService.getSuppliers().subscribe((rs) => {
-            this.data = rs.map((x, index) => {
-                x.position = index + 1;
-                return x;
+        this.supplierService
+            .getSuppliers([], this.first / this.rows, this.rows)
+            .subscribe((rs) => {
+                this.totalCount = rs.totalCount;
+                this.data = rs.data.map((x, index) => {
+                    x.position = index + 1;
+                    return x;
+                });
+                this.isLoading = false;
             });
-            this.isLoading = false;
-        });
     }
 
     handleCreate() {
@@ -124,6 +128,7 @@ export class SupplierComponent implements OnInit{
     onPageChange(event: any) {
         this.first = event.first;
         this.rows = event.rows;
+        this.fetchData();
     }
 
     toastMessage(

@@ -6,6 +6,6 @@
   height: 100vh;
 }
 
-// ::ng-deep .scrollHeight {
-//   height: calc(100vh - 400px) !important;
-// }
+.content-table{
+    height: calc(100vh - 260px);
+}

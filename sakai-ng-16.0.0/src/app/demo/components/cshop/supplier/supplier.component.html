@@ -88,8 +88,8 @@
             (onPageChange)="onPageChange($event)"
             [first]="first"
             [rows]="rows"
-            [totalRecords]="data.length"
-            [rowsPerPageOptions]="[10, 20, 30]"
+            [totalRecords]="totalCount"
+            [rowsPerPageOptions]="pageOption"
         ></p-paginator>
     </section>
 </div>

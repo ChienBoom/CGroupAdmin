@@ -25,7 +25,10 @@
         "Save": "Save",
         "Loading": "Loading",
         "Status": "Status",
-        "Upload": "Upload"
+        "Upload": "Upload",
+        "Edit": "Edit",
+        "Delete": "Delete",
+        "Detail": "Detail"
     },
     "Message": {
         "Notification": "Notification",

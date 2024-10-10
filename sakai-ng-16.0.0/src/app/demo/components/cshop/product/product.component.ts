@@ -13,6 +13,7 @@ import { AddProductDialogComponent } from './add-product-dialog/add-product-dial
 export class ProductComponent implements OnInit{
     dialogRef: DynamicDialogRef | undefined;
     data: any[];
+    totalCount: number = 0;
     isLoading = true;
     first: number = 0;
     rows: number = 10;
@@ -32,10 +33,13 @@ export class ProductComponent implements OnInit{
 
     fetchData() {
         this.productService
-            .getProducts(['Category', 'Brand', 'Supplier'])
+            .getProducts(['Category', 'Brand', 'Supplier'], this.first/this.rows, this.rows)
             .subscribe((rs) => {
-                this.data = rs.map((x, index) => {
+                console.log("rs: ", rs)
+                this.totalCount = rs.totalCount;
+                this.data = rs.data.map((x, index) => {
                     x.position = index + 1;
+                    console.log("x: ", x)
                     return x;
                 });
                 this.isLoading = false;
@@ -75,6 +79,8 @@ export class ProductComponent implements OnInit{
     }
 
     handleCopy(item: any) {
+        console.log('data: ', this.data);
+        console.log("items: ", item)
         this.dialogRef = this.dialogService.open(AddProductDialogComponent, {
             data: {
                 data: item,
@@ -126,6 +132,7 @@ export class ProductComponent implements OnInit{
     onPageChange(event: any) {
         this.first = event.first;
         this.rows = event.rows;
+        this.fetchData();
     }
 
     toastMessage(

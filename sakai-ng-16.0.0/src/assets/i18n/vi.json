@@ -25,7 +25,10 @@
       "Save": "Lưu",
       "Loading": "Đang tải dữ liệu",
       "Status": "Trạng thái",
-      "Upload": "Tải lên"
+      "Upload": "Tải lên",
+      "Edit": "Chỉnh sửa",
+      "Delete": "Xoá",
+      "Detail": "Chi tiết"
   },
   "Message": {
     "Notification": "Thông báo",
