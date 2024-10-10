@@ -2,20 +2,19 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { BaseService } from './base.service';
-import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
 })
-export class SupplierService extends BaseService {
+export class ProductDetailService extends BaseService {
     private domain = environment.apiUrl;
-    private apiUrl = `${this.domain}/cshop-gateway/supplier`;
+    private apiUrl = `${this.domain}/cshop-gateway/productDetail`;
 
     constructor(http: HttpClient) {
         super(http);
     }
 
-    getSuppliers(
+    getProductDetails(
         includes: string[] = [],
         skip: number = 0,
         top: number = 9999

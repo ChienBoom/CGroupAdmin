@@ -6,6 +6,7 @@ import { SupplierComponent } from './supplier/supplier.component';
 import { ProductComponent } from './product/product.component';
 import { OrderComponent } from './order/order.component';
 import { RevenueComponent } from './revenue/revenue.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 @NgModule({
     imports: [
@@ -16,7 +17,7 @@ import { RevenueComponent } from './revenue/revenue.component';
             { path: 'product', component: ProductComponent },
             { path: 'order', component: OrderComponent },
             { path: 'revenue', component: RevenueComponent },
-            // { path: 'film/:id', component: FilmComponent },
+            { path: 'product/:id', component: ProductDetailComponent },
             // { path: 'booking', component: BookingComponent },
             { path: '**', redirectTo: '/notfound' },
         ]),

@@ -23,7 +23,7 @@
                 (click)="handleCreate()"
                 pButton
                 pRipple
-                label="{{ 'Common.Add' | translate }}"
+                label="{{ 'Common.Create' | translate }}"
                 class="ml-[20px]"
                 icon="pi pi-plus"
             ></button>
@@ -40,12 +40,11 @@
                 <ng-template pTemplate="header">
                     <tr>
                         <th>{{ "Common.Position" | translate }}</th>
-                        <th>{{ "CShop.Product.Name" | translate }}</th>
-                        <th>{{ "CShop.Product.Name" | translate }}</th>
-                        <th>{{ "CShop.Brand.Name" | translate }}</th>
-                        <th>{{ "CShop.Supplier.Name" | translate }}</th>
+                        <th>{{ "CShop.Product.Product" | translate }}</th>
+                        <th>{{ "CShop.Product.Detail" | translate }}</th>
+                        <th>{{ "CShop.Product.Evaluate" | translate }}</th>
                         <th>{{ "CShop.Category.Image" | translate }}</th>
-                        <th>{{ "CShop.Product.NumberSold" | translate }}</th>
+                        <th>{{ "CShop.Category.Description" | translate }}</th>
                         <th class="text-center">
                             {{ "Common.Operation" | translate }}
                         </th>
@@ -72,16 +71,18 @@
                         </td>
                         <td>
                             <div class="flex flex-col">
-                                <p-rating [(ngModel)]="item.star" [disabled]="true" [stars]="5" [cancel]="false"></p-rating>
-                                <span>{{ item.numberEvaluate }}</span>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="flex flex-col">
-                                <span>
-                                    {{ item.numberSold }}
-                                </span>
-                                <span>{{ item.numberStock }}</span>
+                                <p-rating
+                                    [(ngModel)]="item.star"
+                                    [disabled]="true"
+                                    [stars]="5"
+                                    [cancel]="false"
+                                ></p-rating>
+                                <span
+                                    >{{
+                                        "CShop.Product.NumberEvaluate"
+                                            | translate
+                                    }}: {{ item.numberEvaluate }}</span
+                                >
                             </div>
                         </td>
                         <td>
@@ -94,9 +95,41 @@
                             ></p-image>
                         </td>
 
-                        <td>{{ item.description }}</td>
+                        <td>
+                            <div class="flex flex-col">
+                                <span>
+                                    {{
+                                        "CShop.Product.NumberSold" | translate
+                                    }}: {{ item.numberSold }}
+                                </span>
+                                <span
+                                    >{{
+                                        "CShop.Product.NumberStock" | translate
+                                    }}: {{ item.numberStock }}</span
+                                >
+                                <span>{{ item.description }}</span>
+                            </div>
+                        </td>
                         <td>
                             <div class="flex items-center justify-center gap-2">
+                                <button
+                                    pButton
+                                    pRipple
+                                    type="button"
+                                    icon="pi pi-plus-circle"
+                                    class="p-button-rounded p-button-text"
+                                    (click)="handleAddDetail(item)"
+                                    pTooltip="{{ 'Common.Add' | translate }}"
+                                ></button>
+                                <button
+                                    pButton
+                                    pRipple
+                                    type="button"
+                                    icon="pi pi-eye"
+                                    class="p-button-rounded p-button-text"
+                                    (click)="handleShowDetail(item)"
+                                    pTooltip="{{ 'Common.Detail' | translate }}"
+                                ></button>
                                 <button
                                     pButton
                                     pRipple

@@ -11,7 +11,7 @@ import { WebSocketService } from 'src/app/demo/service/websocker-services/websoc
     templateUrl: './category.component.html',
     styleUrls: ['./category.component.scss'],
 })
-export class CategoryComponent implements OnInit{
+export class CategoryComponent implements OnInit {
     dialogRef: DynamicDialogRef | undefined;
     data: any[];
     totalCount: number = 0;
@@ -26,7 +26,6 @@ export class CategoryComponent implements OnInit{
         private dialogService: DialogService,
         private messageService: MessageService,
         private confirmService: ConfirmationService
-
     ) {}
 
     ngOnInit() {
@@ -34,14 +33,17 @@ export class CategoryComponent implements OnInit{
     }
 
     fetchData() {
-        this.categoryService.getCategories([], this.first/this.rows, this.rows).subscribe((rs) => {
-            this.totalCount = rs.totalCount
-            this.data = rs.data.map((x, index) => {
-                x.position = index + 1;
-                return x;
-            });
-            this.isLoading = false;
-        });
+        this.categoryService
+            .getCategories([], this.first / this.rows, this.rows)
+            .then((rs) => {
+                this.totalCount = rs.totalCount;
+                this.data = rs.data.map((x, index) => {
+                    x.position = index + 1;
+                    return x;
+                });
+                this.isLoading = false;
+            })
+            .catch((er) => console.log(er));
     }
 
     handleCreate() {
@@ -114,12 +116,12 @@ export class CategoryComponent implements OnInit{
             header: 'Thông báo',
             icon: 'pi pi-trash',
             accept: () => {
-                this.categoryService.remove(id).subscribe(
-                    (rs) => {
+                this.categoryService
+                    .remove(id)
+                    .then((rs) => {
                         this.fetchData();
-                    },
-                    (er) => {}
-                );
+                    })
+                    .catch((er) => console.log(er));
             },
             reject: () => {},
         });
@@ -128,7 +130,7 @@ export class CategoryComponent implements OnInit{
     onPageChange(event: any) {
         this.first = event.first;
         this.rows = event.rows;
-        this.fetchData()
+        this.fetchData();
     }
 
     toastMessage(

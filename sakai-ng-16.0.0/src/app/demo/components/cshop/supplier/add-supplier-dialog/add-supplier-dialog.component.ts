@@ -36,39 +36,39 @@ export class AddSupplierDialogComponent {
 
     handleSave() {
         if (this.isCopy) {
-            this.supplierService.update(this.item.id, this.item).subscribe(
-                (rs) => {
+            this.supplierService
+                .update(this.item.id, this.item)
+                .then((rs) => {
                     this.dialogRef.close({
                         rs: rs,
                         success: true,
                         er: '',
                     });
-                },
-                (er) => {
+                })
+                .catch((er) => {
                     this.dialogRef.close({
                         rs: '',
                         success: false,
                         er: er,
                     });
-                }
-            );
+                });
         } else {
-            this.supplierService.create(this.item).subscribe(
-                (rs) => {
+            this.supplierService
+                .create(this.item)
+                .then((rs) => {
                     this.dialogRef.close({
                         rs: rs,
                         success: true,
                         er: '',
                     });
-                },
-                (er) => {
+                })
+                .catch((er) => {
                     this.dialogRef.close({
                         rs: '',
                         success: false,
                         er: er,
                     });
-                }
-            );
+                });
         }
     }
 }

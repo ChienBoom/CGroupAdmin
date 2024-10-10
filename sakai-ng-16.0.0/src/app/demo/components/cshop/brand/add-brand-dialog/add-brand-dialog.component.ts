@@ -36,39 +36,39 @@ export class AddBrandDialogComponent {
 
     handleSave() {
         if (this.isCopy) {
-            this.brandService.update(this.item.id, this.item).subscribe(
-                (rs) => {
+            this.brandService
+                .update(this.item.id, this.item)
+                .then((rs) => {
                     this.dialogRef.close({
                         rs: rs,
                         success: true,
                         er: '',
                     });
-                },
-                (er) => {
+                })
+                .catch((er) => {
                     this.dialogRef.close({
                         rs: '',
                         success: false,
                         er: er,
                     });
-                }
-            );
+                });
         } else {
-            this.brandService.create(this.item).subscribe(
-                (rs) => {
+            this.brandService
+                .create(this.item)
+                .then((rs) => {
                     this.dialogRef.close({
                         rs: rs,
                         success: true,
                         er: '',
                     });
-                },
-                (er) => {
+                })
+                .then((er) => {
                     this.dialogRef.close({
                         rs: '',
                         success: false,
                         er: er,
                     });
-                }
-            );
+                });
         }
     }
 }

@@ -19,7 +19,7 @@ export class BrandService extends BaseService {
         includes: string[] = [],
         skip: number = 0,
         top: number = 9999
-    ): Observable<any> {
+    ): Promise<any> {
         let url = this.apiUrl;
         url += `?skip=${skip}&top=${top}`;
         if (!includes || includes.length > 0) {
@@ -30,15 +30,15 @@ export class BrandService extends BaseService {
         return this.get<any>(url);
     }
 
-    create(body: any): Observable<any> {
+    create(body: any): Promise<any> {
         return this.post<any>(this.apiUrl, body);
     }
 
-    update(id: string, body: any): Observable<any> {
+    update(id: string, body: any): Promise<any> {
         return this.put<any>(`${this.apiUrl}/${id}`, body);
     }
 
-    remove(id: string): Observable<any> {
+    remove(id: string): Promise<any> {
         return this.delete<any>(`${this.apiUrl}/${id}`);
     }
 }

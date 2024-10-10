@@ -19,6 +19,7 @@
         "Yes": "Yes",
         "No": "No",
         "Add": "Create",
+        "Create": "Create",
         "Search": "Search",
         "Operation": "Operation",
         "Cancel": "Cancel",
@@ -67,7 +68,18 @@
             "NumberSold": "Quantity sold",
             "NumberStock": "Quantity stock",
             "Star": "Star",
-            "NumberEvaluate": "Number evaluate"
+            "NumberEvaluate": "Number evaluate",
+            "Product": "Product",
+            "Detail": "Detail",
+            "Evaluate": "Evaluate",
+            "Revenue": "Revenue"
+        },
+        "ProductDetail": {
+            "Title": "Product Detail",
+            "Color": "Color",
+            "Size": "Size",
+            "Unit": "Unit",
+            "Price": "Price"
         }
     }
 }

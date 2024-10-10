@@ -42,39 +42,39 @@ export class AddCategoryDialogComponent implements OnInit {
 
     handleSave() {
         if (this.isCopy) {
-            this.categoryService.update(this.item.id, this.item).subscribe(
-                (rs) => {
+            this.categoryService
+                .update(this.item.id, this.item)
+                .then((rs) => {
                     this.dialogRef.close({
                         rs: rs,
                         success: true,
                         er: '',
                     });
-                },
-                (er) => {
+                })
+                .catch((er) => {
                     this.dialogRef.close({
                         rs: '',
                         success: false,
                         er: er,
                     });
-                }
-            );
+                });
         } else {
-            this.categoryService.create(this.item).subscribe(
-                (rs) => {
+            this.categoryService
+                .create(this.item)
+                .then((rs) => {
                     this.dialogRef.close({
                         rs: rs,
                         success: true,
                         er: '',
                     });
-                },
-                (er) => {
+                })
+                .catch((er) => {
                     this.dialogRef.close({
                         rs: '',
                         success: false,
                         er: er,
                     });
-                }
-            );
+                });
         }
     }
 }

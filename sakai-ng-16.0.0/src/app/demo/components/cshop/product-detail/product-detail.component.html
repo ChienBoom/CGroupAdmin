@@ -8,7 +8,7 @@
     <p-confirmDialog></p-confirmDialog>
     <div class="flex items-center justify-between">
         <span class="font-semibold text-xl text-primary">{{
-            "CShop.Supplier.Title" | translate
+            "CShop.ProductDetail.Title" | translate
         }}</span>
         <div>
             <span class="p-input-icon-right">
@@ -40,12 +40,11 @@
                 <ng-template pTemplate="header">
                     <tr>
                         <th>{{ "Common.Position" | translate }}</th>
-                        <th>{{ "CShop.Supplier.Name" | translate }}</th>
-                        <th class="text-center">
-                            {{ "CShop.Supplier.Email" | translate }}
-                        </th>
-                        <th>{{ "CShop.Supplier.PhoneNumber" | translate }}</th>
-                        <th>{{ "CShop.Supplier.Address" | translate }}</th>
+                        <th>{{ "CShop.Product.Detail" | translate }}</th>
+                        <th>{{ "CShop.Product.Evaluate" | translate }}</th>
+                        <th>{{ "CShop.Product.Revenue" | translate }}</th>
+                        <th>{{ "CShop.Category.Image" | translate }}</th>
+                        <th>{{ "CShop.Category.Description" | translate }}</th>
                         <th class="text-center">
                             {{ "Common.Operation" | translate }}
                         </th>
@@ -54,12 +53,59 @@
                 <ng-template pTemplate="body" let-item>
                     <tr>
                         <td>{{ item.position }}</td>
-                        <td>{{ item.name }}</td>
-                        <td class="text-center">{{ item.email }}</td>
                         <td>
-                            {{ item.phoneNumber }}
+                            <div class="flex flex-col">
+                                <span>{{ "CShop.ProductDetail.Color" | translate }}: {{ item.color }}</span>
+                                <span>{{ "CShop.ProductDetail.Size" | translate }}: {{ item.size }}</span>
+                                <span>{{ "CShop.ProductDetail.Unit" | translate }}: {{ item.unit }}</span>
+                            </div>
                         </td>
-                        <td>{{ item.address }}</td>
+
+                        <td>
+                            <div class="flex flex-col">
+                                <p-rating
+                                    [(ngModel)]="item.star"
+                                    [disabled]="true"
+                                    [stars]="5"
+                                    [cancel]="false"
+                                ></p-rating>
+                                <span
+                                    >{{
+                                        "CShop.Product.NumberEvaluate"
+                                            | translate
+                                    }}: {{ item.numberEvaluate }}</span
+                                >
+                            </div>
+                        </td>
+                        <td>
+                            <div class="flex flex-col">
+                                <span>
+                                    {{
+                                        "CShop.Product.NumberSold" | translate
+                                    }}: {{ item.numberSold }}
+                                </span>
+                                <span
+                                    >{{
+                                        "CShop.Product.NumberStock" | translate
+                                    }}: {{ item.numberStock }}</span
+                                >
+                            </div>
+                        </td>
+                        <td>
+                            <p-image
+                                src="{{ item.pictureUrl }}"
+                                alt="Image"
+                                width="100"
+                                loading="lazy"
+                                [preview]="true"
+                            ></p-image>
+                        </td>
+
+                        <td>
+                            <div class="flex flex-col">
+                                <span>{{ item.description }}</span>
+                            </div>
+                        </td>
                         <td>
                             <div class="flex items-center justify-center gap-2">
                                 <button
@@ -69,6 +115,7 @@
                                     icon="pi pi-file-edit"
                                     class="p-button-rounded p-button-text"
                                     (click)="handleCopy(item)"
+                                    pTooltip="{{ 'Common.Edit' | translate }}"
                                 ></button>
                                 <button
                                     pButton
@@ -77,6 +124,7 @@
                                     icon="pi pi pi-trash"
                                     class="p-button-rounded p-button-text"
                                     (click)="handleDelete(item.id)"
+                                    pTooltip="{{ 'Common.Delete' | translate }}"
                                 ></button>
                             </div>
                         </td>

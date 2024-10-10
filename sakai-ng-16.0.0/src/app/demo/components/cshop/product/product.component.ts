@@ -2,15 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { ProductService } from 'src/app/demo/service/cshop-services/product.service';
-import { WebSocketService } from 'src/app/demo/service/websocker-services/websocket.service';
 import { AddProductDialogComponent } from './add-product-dialog/add-product-dialog.component';
+import { AddProductDetailDialogComponent } from '../product-detail/add-product-detail-dialog/add-product-detail-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-product',
     templateUrl: './product.component.html',
     styleUrls: ['./product.component.scss'],
 })
-export class ProductComponent implements OnInit{
+export class ProductComponent implements OnInit {
     dialogRef: DynamicDialogRef | undefined;
     data: any[];
     totalCount: number = 0;
@@ -20,11 +21,11 @@ export class ProductComponent implements OnInit{
     pageOption: any[] = [5, 10, 20, 30];
 
     constructor(
+        private router: Router,
         private productService: ProductService,
         private dialogService: DialogService,
         private messageService: MessageService,
-        private confirmService: ConfirmationService,
-        public webSocketService: WebSocketService
+        private confirmService: ConfirmationService
     ) {}
 
     ngOnInit() {
@@ -33,17 +34,21 @@ export class ProductComponent implements OnInit{
 
     fetchData() {
         this.productService
-            .getProducts(['Category', 'Brand', 'Supplier'], this.first/this.rows, this.rows)
-            .subscribe((rs) => {
-                console.log("rs: ", rs)
+            .getProducts(
+                ['Category', 'Brand', 'Supplier'],
+                this.first / this.rows,
+                this.rows
+            )
+            .then((rs) => {
                 this.totalCount = rs.totalCount;
                 this.data = rs.data.map((x, index) => {
                     x.position = index + 1;
-                    console.log("x: ", x)
                     return x;
                 });
                 this.isLoading = false;
-            });
+                console.log('data: ', this.data);
+            })
+            .catch((er) => console.log(er));
     }
 
     handleCreate() {
@@ -78,9 +83,48 @@ export class ProductComponent implements OnInit{
         });
     }
 
+    handleAddDetail(item: any) {
+        this.dialogRef = this.dialogService.open(
+            AddProductDetailDialogComponent,
+            {
+                data: {
+                    data: item,
+                    IsCopy: false,
+                },
+                header: 'Custom dialog',
+                width: '30%',
+            }
+        );
+
+        this.dialogRef.onClose.subscribe((result) => {
+            if (result) {
+                if (result.success) {
+                    this.toastMessage(
+                        'msg-toast',
+                        'success',
+                        'Thông báo',
+                        'Thêm mới bản ghi thành công'
+                    );
+                    this.fetchData();
+                } else {
+                    this.toastMessage(
+                        'msg-toast',
+                        'error',
+                        'Thông báo',
+                        'Thêm mới bản ghi thất bại'
+                    );
+                }
+            }
+        });
+    }
+
+    handleShowDetail(item: any) {
+        this.router.navigate([`/cshop/product/${item.id}`]);
+    }
+
     handleCopy(item: any) {
-        console.log('data: ', this.data);
-        console.log("items: ", item)
+        console.log('dataCopy: ', this.data);
+        console.log('itemCopy: ', item);
         this.dialogRef = this.dialogService.open(AddProductDialogComponent, {
             data: {
                 data: item,
@@ -118,12 +162,12 @@ export class ProductComponent implements OnInit{
             header: 'Thông báo',
             icon: 'pi pi-trash',
             accept: () => {
-                this.productService.remove(id).subscribe(
-                    (rs) => {
+                this.productService
+                    .remove(id)
+                    .then((rs) => {
                         this.fetchData();
-                    },
-                    (er) => {}
-                );
+                    })
+                    .catch((er) => console.log(er));
             },
             reject: () => {},
         });

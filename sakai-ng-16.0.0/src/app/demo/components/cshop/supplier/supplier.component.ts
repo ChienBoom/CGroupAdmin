@@ -34,14 +34,15 @@ export class SupplierComponent implements OnInit {
     fetchData() {
         this.supplierService
             .getSuppliers([], this.first / this.rows, this.rows)
-            .subscribe((rs) => {
+            .then((rs) => {
                 this.totalCount = rs.totalCount;
                 this.data = rs.data.map((x, index) => {
                     x.position = index + 1;
                     return x;
                 });
                 this.isLoading = false;
-            });
+            })
+            .catch((er) => console.log(er));
     }
 
     handleCreate() {
@@ -114,12 +115,12 @@ export class SupplierComponent implements OnInit {
             header: 'Thông báo',
             icon: 'pi pi-trash',
             accept: () => {
-                this.supplierService.remove(id).subscribe(
-                    (rs) => {
+                this.supplierService
+                    .remove(id)
+                    .then((rs) => {
                         this.fetchData();
-                    },
-                    (er) => {}
-                );
+                    })
+                    .catch((er) => console.log(er));
             },
             reject: () => {},
         });

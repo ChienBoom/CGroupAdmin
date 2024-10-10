@@ -19,6 +19,7 @@
       "Yes": "Có",
       "No": "Không",
       "Add": "Thêm mới",
+      "Create": "Tạo mới",
       "Search": "Tìm kiếm",
       "Operation": "Thao tác",
       "Cancel": "Huỷ",
@@ -65,9 +66,20 @@
           "Title": "Danh sách Sản phẩm",
           "Name": "Tên sản phẩm",
           "NumberSold": "SL đã bán",
-          "NumberStock": "SL còn trong kho",
+          "NumberStock": "SL còn",
           "Star": "Sao",
-          "NumberEvaluate": "SL đánh giá"
+          "NumberEvaluate": "SL đánh giá",
+          "Product": "Sản phẩm",
+          "Detail": "Chi tiết",
+          "Evaluate": "Đánh giá",
+          "Revenue": "Thống kê"
+      },
+      "ProductDetail": {
+        "Title": "Chi tiết sản phẩm",
+        "Color": "Màu sắc",
+        "Size": "Kích thước",
+        "Unit": "Đơn vị",
+        "Price": "Giá tiền"
       }
   }
 }
